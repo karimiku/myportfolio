@@ -44,9 +44,9 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
         <span className={`font-bold italic ${className}`} style={{
             whiteSpace: 'nowrap',
             display: 'inline-block',
-            maxWidth: '100%',
             overflow: 'visible',
-            paddingRight: '1.5rem'
+            paddingRight: '2rem',
+            minWidth: 'fit-content'
         }}>
             {displayText}
             {showCursor && currentIndex < text.length && (

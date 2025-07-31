@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
+import { ChevronDown, Github } from 'lucide-react'
 import TypeWriter from './TypeWriter'
 import type { SocialLink } from '../types'
 
@@ -18,8 +18,8 @@ const Hero: React.FC = () => {
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
                     {/* Text Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -31,9 +31,10 @@ const Hero: React.FC = () => {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.8 }}
-                            className="bg-dark-800/30 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 mb-8 border border-primary-500/20 shadow-xl hover:border-primary-500/40 transition-all duration-300 max-w-full"
+                            className="bg-dark-800/30 backdrop-blur-xl rounded-2xl p-3 sm:p-4 md:p-6 lg:p-8 mb-8 border border-primary-500/20 shadow-xl hover:border-primary-500/40 transition-all duration-300 w-full overflow-visible"
                             style={{
-                                boxShadow: '0 0 50px rgba(99, 102, 241, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                                boxShadow: '0 0 50px rgba(99, 102, 241, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                                minWidth: '280px'
                             }}
                         >
                             <div className="flex items-center gap-3 mb-8">
@@ -54,23 +55,27 @@ const Hero: React.FC = () => {
                                 />
                                 <span className="text-dark-300 text-sm ml-3 font-mono">portfolio.tsx</span>
                             </div>
-                            <div className="space-y-3 sm:space-y-4 overflow-visible w-full pr-8">
-                                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-bold italic leading-tight break-words">
-                                    <TypeWriter
-                                        text="Hello"
-                                        delay={500}
-                                        speed={120}
-                                        className="text-blue-400"
-                                    />
-                                </div>
-                                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-bold italic leading-tight break-words">
-                                    <span className="gradient-text">
+                            <div className="hero-text-container space-y-3 sm:space-y-4 md:space-y-5 w-full overflow-visible">
+                                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-bold italic leading-tight overflow-visible">
+                                    <div className="overflow-visible whitespace-nowrap">
                                         <TypeWriter
-                                            text="I'm Rikuto"
-                                            delay={1500}
-                                            speed={80}
+                                            text="Hello"
+                                            delay={500}
+                                            speed={120}
+                                            className="text-blue-400"
                                         />
-                                    </span>
+                                    </div>
+                                </div>
+                                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-bold italic leading-tight overflow-visible">
+                                    <div className="overflow-visible whitespace-nowrap">
+                                        <span className="gradient-text">
+                                            <TypeWriter
+                                                text="I'm Rikuto"
+                                                delay={1500}
+                                                speed={80}
+                                            />
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -137,10 +142,21 @@ const Hero: React.FC = () => {
                             </motion.div>
                             <motion.img
                                 whileHover={{ scale: 1.05 }}
-                                src="../../public/profile-dog.jpg"
+                                src="/profile-dog.JPG"
                                 alt="プロフィール写真"
                                 className="relative z-10 w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover glow-box"
                                 style={{ objectPosition: '0% 20%' }}
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    // 複数の拡張子を試す
+                                    if (target.src.includes('.JPG')) {
+                                        target.src = '/profile-dog.jpg';
+                                    } else if (target.src.includes('.jpg')) {
+                                        target.src = '/profile-dog.png';
+                                    } else {
+                                        target.src = 'https://via.placeholder.com/400x400/6366f1/ffffff?text=Profile';
+                                    }
+                                }}
                             />
                         </div>
                     </motion.div>
