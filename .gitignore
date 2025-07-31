@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.production.local
+
+# Logs
+*.log
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Cache
+.cache
+.eslintcache
+
+# IDEs and editors
+.vscode
+.idea
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Bun
+.bun
+
+# Vite
+vite.config.*.timestamp-*
