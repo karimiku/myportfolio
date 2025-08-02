@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react'
+import { Mail, MapPin, Send, Github } from 'lucide-react'
 import type { FormData, ContactInfo, SocialLink } from '../types'
+import { contactConfig } from '../config/contact'
 
 const Contact: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
@@ -9,6 +10,8 @@ const Contact: React.FC = () => {
         email: '',
         message: ''
     })
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
@@ -17,43 +20,67 @@ const Contact: React.FC = () => {
         })
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        // フォーム送信処理をここに実装
-        console.log('Form submitted:', formData)
-        alert('メッセージを送信しました！ありがとうございます。')
-        setFormData({ name: '', email: '', message: '' })
+        setIsSubmitting(true)
+        setSubmitStatus('idle')
+
+        try {
+            // Netlify Forms または EmailJS を使用した実際の送信処理
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    'form-name': 'contact',
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message
+                }).toString()
+            })
+
+            if (response.ok) {
+                setSubmitStatus('success')
+                setFormData({ name: '', email: '', message: '' })
+            } else {
+                throw new Error('送信に失敗しました')
+            }
+        } catch (error) {
+            console.error('Form submission error:', error)
+            setSubmitStatus('error')
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     const contactInfo: ContactInfo[] = [
         {
             icon: Mail,
             label: 'メール',
-            value: '[メールアドレス]',
-            href: 'mailto:[メールアドレス]'
-        },
-        {
-            icon: Phone,
-            label: '電話',
-            value: '[電話番号]',
-            href: 'tel:[電話番号]'
+            value: contactConfig.displayEmail,
+            href: `mailto:${contactConfig.displayEmail}`
         },
         {
             icon: MapPin,
             label: '所在地',
-            value: '[所在地]',
+            value: contactConfig.location,
             href: '#'
+        },
+        {
+            icon: Github,
+            label: 'GitHub',
+            value: 'github.com/karimiku',
+            href: contactConfig.github
         }
     ]
 
     const socialLinks: SocialLink[] = [
-        { icon: Github, href: '#', label: 'GitHub' },
-        { icon: Linkedin, href: '#', label: 'LinkedIn' },
-        { icon: Twitter, href: '#', label: 'Twitter' }
+        { icon: Github, href: contactConfig.github, label: 'GitHub' },
+        { icon: Mail, href: `mailto:${contactConfig.displayEmail}`, label: 'Email' },
+        { icon: MapPin, href: '#', label: 'Location' }
     ]
 
     return (
-        <section id="contact" className="py-20 hidden">
+        <section id="contact" className="py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -141,7 +168,8 @@ const Contact: React.FC = () => {
                         className="glass-effect p-8 rounded-2xl"
                     >
                         <h3 className="text-2xl font-bold text-white mb-6">メッセージを送る</h3>
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-6" name="contact" data-netlify="true">
+                            <input type="hidden" name="form-name" value="contact" />
                             <div>
                                 <label className="block text-dark-300 text-sm font-medium mb-2">
                                     お名前
@@ -189,13 +217,47 @@ const Contact: React.FC = () => {
 
                             <motion.button
                                 type="submit"
-                                whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(99, 102, 241, 0.5)' }}
-                                whileTap={{ scale: 0.98 }}
-                                className="w-full px-8 py-4 bg-gradient-to-r from-primary-500 to-purple-500 text-white rounded-lg font-semibold flex items-center justify-center space-x-2 transition-all duration-300"
+                                disabled={isSubmitting}
+                                whileHover={!isSubmitting ? { scale: 1.02, boxShadow: '0 0 30px rgba(99, 102, 241, 0.5)' } : {}}
+                                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                                className={`w-full px-8 py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-all duration-300 ${isSubmitting
+                                    ? 'bg-dark-600 cursor-not-allowed'
+                                    : 'bg-gradient-to-r from-primary-500 to-purple-500 hover:from-primary-600 hover:to-purple-600'
+                                    } text-white`}
                             >
-                                <Send size={20} />
-                                <span>送信する</span>
+                                {isSubmitting ? (
+                                    <>
+                                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                                        <span>送信中...</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Send size={20} />
+                                        <span>送信する</span>
+                                    </>
+                                )}
                             </motion.button>
+
+                            {/* Status Messages */}
+                            {submitStatus === 'success' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-center"
+                                >
+                                    ✅ メッセージを送信しました！ありがとうございます。
+                                </motion.div>
+                            )}
+
+                            {submitStatus === 'error' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-center"
+                                >
+                                    ❌ 送信に失敗しました。もう一度お試しください。
+                                </motion.div>
+                            )}
                         </form>
                     </motion.div>
                 </div>
