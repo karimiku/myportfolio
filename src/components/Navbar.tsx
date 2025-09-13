@@ -20,7 +20,8 @@ const Navbar: React.FC = () => {
         { name: 'プロフィール', href: '#about' },
         { name: '経歴', href: '#experience' },
         { name: 'スキル', href: '#skills' },
-        { name: 'プロジェクト', href: '#projects' }
+        { name: 'プロジェクト', href: '#projects' },
+        { name: 'お問い合わせ', href: '#contact' }
     ]
 
     return (
@@ -32,15 +33,17 @@ const Navbar: React.FC = () => {
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    <motion.div
+                    <motion.a
+                        href="#home"
                         whileHover={{ scale: 1.05 }}
                         className="text-2xl font-display font-semibold italic gradient-text pr-6"
+                        aria-label="Rikuto Home"
                     >
-                        My Portfolio Site
-                    </motion.div>
+                        Rikuto
+                    </motion.a>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex space-x-8">
+                    <div className="hidden md:flex space-x-6 lg:space-x-8">
                         {navItems.map((item) => (
                             <motion.a
                                 key={item.name}

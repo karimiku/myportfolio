@@ -17,44 +17,61 @@ const Contact: React.FC = () => {
         })
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        // フォーム送信処理をここに実装
-        console.log('Form submitted:', formData)
-        alert('メッセージを送信しました！ありがとうございます。')
-        setFormData({ name: '', email: '', message: '' })
+        try {
+            const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined
+            if (endpoint) {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                if (!res.ok) throw new Error('Failed to submit')
+            } else {
+                console.log('Form submitted (no endpoint configured):', formData)
+            }
+            alert('メッセージを送信しました。ありがとうございます！')
+            setFormData({ name: '', email: '', message: '' })
+        } catch (error) {
+            console.error(error)
+            alert('送信に失敗しました。時間をおいて再度お試しください。')
+        }
     }
 
     const contactInfo: ContactInfo[] = [
         {
             icon: Mail,
             label: 'メール',
-            value: '[メールアドレス]',
-            href: 'mailto:[メールアドレス]'
+            value: 'contact@rikuto-portfolio.com',
+            href: 'mailto:contact@rikuto-portfolio.com'
         },
         {
             icon: Phone,
             label: '電話',
-            value: '[電話番号]',
-            href: 'tel:[電話番号]'
+            value: '非公開',
+            href: '#'
         },
         {
             icon: MapPin,
             label: '所在地',
-            value: '[所在地]',
+            value: 'Tokyo, Japan',
             href: '#'
         }
     ]
 
     const socialLinks: SocialLink[] = [
-        { icon: Github, href: '#', label: 'GitHub' },
-        { icon: Linkedin, href: '#', label: 'LinkedIn' },
-        { icon: Twitter, href: '#', label: 'Twitter' }
+        { icon: Github, href: 'https://github.com/karimiku', label: 'GitHub' },
+        { icon: Linkedin, href: 'https://www.linkedin.com/', label: 'LinkedIn' },
+        { icon: Twitter, href: 'https://x.com/', label: 'Twitter' }
     ]
 
     return (
-        <section id="contact" className="py-20 hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="contact" className="py-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +88,7 @@ const Contact: React.FC = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                     {/* Contact Info */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}

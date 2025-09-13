@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Eye } from 'lucide-react'
 import type { Project } from '../types'
 
 const Projects: React.FC = () => {
@@ -50,38 +49,18 @@ const Projects: React.FC = () => {
                             transition={{ duration: 0.8, delay: index * 0.1 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -10 }}
-                            className="glass-effect rounded-2xl overflow-hidden group pr-6"
+                            className="glass-effect rounded-2xl overflow-hidden group"
                         >
                             {/* Project Image */}
                             <div className="relative overflow-hidden">
                                 <img
                                     src={project.image}
                                     alt={project.title}
+                                    loading="lazy"
+                                    decoding="async"
                                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                                {/* Overlay Buttons */}
-                                <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <motion.a
-                                        href={project.liveUrl}
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
-                                        aria-label="ライブデモを見る"
-                                    >
-                                        <Eye size={20} />
-                                    </motion.a>
-                                    <motion.a
-                                        href={project.githubUrl}
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
-                                        aria-label="GitHubを見る"
-                                    >
-                                        <Github size={20} />
-                                    </motion.a>
-                                </div>
 
                                 {project.featured && (
                                     <div className="absolute top-4 left-4">
@@ -93,11 +72,11 @@ const Projects: React.FC = () => {
                             </div>
 
                             {/* Project Content */}
-                            <div className="p-6 pr-8">
+                            <div className="p-6">
                                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-400 transition-colors">
                                     {project.title}
                                 </h3>
-                                <p className="text-dark-300 mb-4 leading-relaxed">
+                                <p className="text-dark-300 mb-4 leading-relaxed break-words">
                                     {project.description}
                                 </p>
 
@@ -113,25 +92,7 @@ const Projects: React.FC = () => {
                                     ))}
                                 </div>
 
-                                {/* Links */}
-                                <div className="flex space-x-4">
-                                    <motion.a
-                                        href={project.liveUrl}
-                                        whileHover={{ scale: 1.05 }}
-                                        className="flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors"
-                                    >
-                                        <ExternalLink size={16} />
-                                        <span className="text-sm font-medium">ライブデモ</span>
-                                    </motion.a>
-                                    <motion.a
-                                        href={project.githubUrl}
-                                        whileHover={{ scale: 1.05 }}
-                                        className="flex items-center space-x-2 text-dark-400 hover:text-white transition-colors"
-                                    >
-                                        <Github size={16} />
-                                        <span className="text-sm font-medium">GitHub</span>
-                                    </motion.a>
-                                </div>
+                                {/* Links removed as requested */}
                             </div>
                         </motion.div>
                     ))}

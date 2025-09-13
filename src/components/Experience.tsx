@@ -24,7 +24,7 @@ const ExperienceSection: React.FC = () => {
 
     return (
         <section id="experience" className="py-20 bg-dark-800/30 overflow-visible">
-            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -50,8 +50,7 @@ const ExperienceSection: React.FC = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8, delay: index * 0.2 }}
                                 viewport={{ once: true }}
-                                className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                                    } max-md:!flex-col max-md:text-center`}
+                                className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} max-md:!flex-col max-md:text-center`}
                             >
                                 {/* Content */}
                                 <div className="w-5/12 max-md:w-full">
@@ -87,7 +86,7 @@ const ExperienceSection: React.FC = () => {
                                 </div>
 
                                 {/* Timeline Dot */}
-                                <div className="w-2/12 flex justify-center max-md:w-auto max-md:absolute max-md:left-8 max-md:top-8">
+                                <div className="w-2/12 flex justify-center max-md:w-auto max-md:absolute max-md:left-6 max-md:top-8">
                                     <motion.div
                                         initial={{ scale: 0 }}
                                         whileInView={{ scale: 1 }}
