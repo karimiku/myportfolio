@@ -6,7 +6,7 @@ import type { ContactInfo, Skill } from "../types";
 const About: React.FC = () => {
   const personalInfo: ContactInfo[] = [
     { icon: MapPin, label: "所在地", value: "東京" },
-    { icon: User, label: "職業", value: "エンジニア" },
+    { icon: User, label: "職業", value: "学生エンジニア？" },
   ];
 
   const stats = [
@@ -19,17 +19,17 @@ const About: React.FC = () => {
   const previewSkills: Skill[] = [
     {
       name: "TypeScript",
-      level: 20,
+      level: 10,
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
     },
     {
       name: "Go",
-      level: 10,
+      level: 5,
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
     },
     {
       name: "Python",
-      level: 10,
+      level: 5,
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     },
   ];
