@@ -62,7 +62,6 @@ const About: React.FC = () => {
                 まだ学生ですが、現場で役立つ技術を自分の手で磨いていくことにワクワクしています。
               </p>
               <p className="text-slate-600 text-lg leading-relaxed">
-                TypeScriptとGoを並行して勉強しながらプロダクトを組み立て、
                 「作って終わり」ではなく、使う人に価値が伝わるソフトウェアを実装できるエンジニアを目指しています。
               </p>
             </div>
