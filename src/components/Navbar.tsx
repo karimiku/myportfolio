@@ -20,8 +20,7 @@ const Navbar: React.FC = () => {
         { name: 'プロフィール', href: '#about' },
         { name: '経歴', href: '#experience' },
         { name: 'スキル', href: '#skills' },
-        { name: 'プロジェクト', href: '#projects' },
-        { name: 'お問い合わせ', href: '#contact' }
+        { name: 'プロジェクト', href: '#projects' }
     ]
 
     return (
@@ -49,7 +48,7 @@ const Navbar: React.FC = () => {
                                 key={item.name}
                                 href={item.href}
                                 whileHover={{ y: -2 }}
-                                className="text-dark-300 hover:text-white transition-colors duration-300 relative group"
+                                className="text-slate-600 hover:text-slate-900 transition-colors duration-300 relative group"
                             >
                                 {item.name}
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
@@ -61,7 +60,7 @@ const Navbar: React.FC = () => {
                     <div className="md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-dark-300 hover:text-white transition-colors"
+                            className="text-slate-600 hover:text-slate-900 transition-colors"
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -81,7 +80,7 @@ const Navbar: React.FC = () => {
                                 key={item.name}
                                 href={item.href}
                                 onClick={() => setIsOpen(false)}
-                                className="block py-2 text-dark-300 hover:text-white transition-colors"
+                                className="block py-2 text-slate-600 hover:text-slate-900 transition-colors"
                             >
                                 {item.name}
                             </a>

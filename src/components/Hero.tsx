@@ -16,13 +16,13 @@ const Hero: React.FC = () => {
     >
       {/* Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-200 rounded-full blur-[140px] animate-float"></div>
         <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-200 rounded-full blur-[140px] animate-float"
           style={{ animationDelay: "2s" }}
         ></div>
         <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-float"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-rose-200 rounded-full blur-[160px] animate-float"
           style={{ animationDelay: "4s" }}
         ></div>
       </div>
@@ -40,16 +40,12 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="bg-dark-800/30 backdrop-blur-xl rounded-2xl p-3 sm:p-4 md:p-6 lg:p-8 mb-8 border border-primary-500/20 shadow-xl hover:border-primary-500/40 transition-all duration-300 w-full overflow-visible"
-              style={{
-                boxShadow:
-                  "0 0 50px rgba(99, 102, 241, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
-                minWidth: "280px",
-              }}
+              className="glass-effect rounded-3xl p-4 sm:p-6 lg:p-8 mb-8 transition-all duration-300 w-full overflow-visible"
+              style={{ minWidth: "280px" }}
             >
               <div className="flex items-center gap-3 mb-8">
                 <motion.div
-                  className="w-3 h-3 bg-red-500 rounded-full"
+                  className="w-3 h-3 bg-red-400 rounded-full"
                   animate={{ opacity: [1, 0.5, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
@@ -63,7 +59,7 @@ const Hero: React.FC = () => {
                   animate={{ opacity: [1, 0.5, 1] }}
                   transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
                 />
-                <span className="text-dark-300 text-sm ml-3 font-mono">
+                <span className="text-slate-500 text-sm ml-3 font-mono">
                   portfolio.tsx
                 </span>
               </div>
@@ -74,7 +70,7 @@ const Hero: React.FC = () => {
                       text="Hello World"
                       delay={500}
                       speed={120}
-                      className="text-blue-400"
+                      className="text-sky-600"
                     />
                   </div>
                 </div>
@@ -98,10 +94,10 @@ const Hero: React.FC = () => {
                 href="#projects"
                 whileHover={{
                   scale: 1.05,
-                  boxShadow: "0 0 30px rgba(99, 102, 241, 0.5)",
+                  boxShadow: "0 0 30px rgba(56, 189, 248, 0.45)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-primary-500 to-purple-500 text-white rounded-full font-semibold text-center transition-all duration-300 text-sm sm:text-base"
+                className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-sky-500 via-cyan-500 to-purple-500 text-white rounded-full font-semibold text-center transition-all duration-300 text-sm sm:text-base drop-shadow-lg"
               >
                 プロジェクトを見る
               </motion.a>
@@ -109,7 +105,7 @@ const Hero: React.FC = () => {
                 href="#about"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 sm:px-8 sm:py-4 glass-effect text-white rounded-full font-semibold text-center border border-primary-500/30 hover:border-primary-500/60 transition-all duration-300 text-sm sm:text-base"
+                className="px-6 py-3 sm:px-8 sm:py-4 glass-effect text-slate-700 rounded-full font-semibold text-center border border-cyan-300/60 hover:border-cyan-400 transition-all duration-300 text-sm sm:text-base"
               >
                 詳しく見る
               </motion.a>
@@ -127,7 +123,7 @@ const Hero: React.FC = () => {
                   key={index}
                   href={social.href}
                   whileHover={{ scale: 1.2, y: -5 }}
-                  className="p-3 glass-effect rounded-full text-dark-300 hover:text-white transition-colors duration-300"
+                  className="p-3 glass-effect rounded-full text-slate-500 hover:text-slate-900 transition-colors duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={24} />
@@ -147,19 +143,18 @@ const Hero: React.FC = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500 via-purple-500 to-pink-500 p-1"
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-sky-400 via-purple-400 to-rose-400 p-1"
               >
-                <div className="w-full h-full rounded-full bg-dark-900"></div>
+                <div className="w-full h-full rounded-full bg-white"></div>
               </motion.div>
               <motion.img
                 whileHover={{ scale: 1.05 }}
                 src="/profile-dog.JPG"
                 alt="プロフィール写真"
-                className="relative z-10 w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover glow-box"
+                className="relative z-10 w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover glow-box border-4 border-white"
                 style={{ objectPosition: "0% 20%" }}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  // 複数の拡張子を試す
                   if (target.src.includes(".JPG")) {
                     target.src = "/profile-dog.jpg";
                   } else if (target.src.includes(".jpg")) {
@@ -185,7 +180,7 @@ const Hero: React.FC = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="text-dark-400 cursor-pointer"
+          className="text-slate-500 cursor-pointer"
         >
           <ChevronDown size={32} />
         </motion.div>

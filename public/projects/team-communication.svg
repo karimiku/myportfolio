@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-labelledby="title desc">
+  <title id="title">Team Communication Tool Visual</title>
+  <desc id="desc">Illustration representing a team communication flow dashboard</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eef2ff" />
+      <stop offset="100%" stop-color="#e0f2fe" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)" rx="32" />
+  <g transform="translate(70 60)">
+    <rect width="460" height="280" rx="28" fill="#ffffff" opacity="0.9" />
+    <rect x="32" y="40" width="400" height="48" rx="16" fill="#e2e8f0" />
+    <text x="48" y="72" fill="#475569" font-family="'Inter',sans-serif" font-size="20" font-weight="600">Weekly Team Pulse</text>
+    <g transform="translate(32 112)">
+      <rect width="200" height="160" rx="20" fill="#f1f5f9" />
+      <rect x="20" y="28" width="160" height="22" rx="11" fill="#38bdf8" opacity="0.45" />
+      <rect x="20" y="64" width="140" height="18" rx="9" fill="#a855f7" opacity="0.35" />
+      <rect x="20" y="94" width="120" height="18" rx="9" fill="#f97316" opacity="0.35" />
+      <rect x="20" y="124" width="90" height="18" rx="9" fill="#22c55e" opacity="0.35" />
+    </g>
+    <g transform="translate(252 112)">
+      <rect width="180" height="160" rx="20" fill="#f1f5f9" />
+      <rect x="20" y="28" width="140" height="26" rx="13" fill="url(#panel)" />
+      <text x="32" y="48" fill="#0f172a" font-family="'Inter',sans-serif" font-size="16" font-weight="600">Team Goals</text>
+      <circle cx="48" cy="92" r="18" fill="#fcd34d" opacity="0.85" />
+      <circle cx="100" cy="92" r="18" fill="#f472b6" opacity="0.85" />
+      <circle cx="76" cy="128" r="18" fill="#22d3ee" opacity="0.85" />
+    </g>
+    <rect x="320" y="32" width="72" height="72" rx="24" fill="#bae6fd" opacity="0.7" />
+    <rect x="60" y="16" width="72" height="72" rx="24" fill="#fecdd3" opacity="0.5" />
+  </g>
+</svg>

@@ -6,14 +6,7 @@ import type { ContactInfo, Skill } from "../types";
 const About: React.FC = () => {
   const personalInfo: ContactInfo[] = [
     { icon: MapPin, label: "所在地", value: "東京" },
-    { icon: User, label: "職業", value: "学生エンジニア？" },
-  ];
-
-  const stats = [
-    { number: "1年", label: "経験年数" },
-    { number: "2+", label: "プロジェクト" },
-    { number: "バックエンド", label: "専門" },
-    { number: "インターン", label: "参加中" },
+    { icon: User, label: "現在", value: "学生エンジニア" },
   ];
 
   const previewSkills: Skill[] = [
@@ -26,11 +19,6 @@ const About: React.FC = () => {
       name: "Go",
       level: 5,
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
-    },
-    {
-      name: "Python",
-      level: 5,
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     },
   ];
 
@@ -68,12 +56,14 @@ const About: React.FC = () => {
             className="space-y-6"
           >
             <div className="glass-effect p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold mb-6 text-white">About</h3>
-              <p className="text-dark-300 text-lg leading-relaxed mb-6">
-                バックエンドエンジニアに俺はなる
+              <h3 className="text-2xl font-bold mb-6 text-slate-900">About</h3>
+              <p className="text-slate-600 text-lg leading-relaxed mb-6">
+                アイデアを形にする瞬間が好きで、手の届くソフトウェアから価値を生み出したいと考えています。
+                まだ学生ですが、現場で役立つ技術を自分の手で磨いていくことにワクワクしています。
               </p>
-              <p className="text-dark-300 text-lg leading-relaxed">
-                I will become a backend engineer
+              <p className="text-slate-600 text-lg leading-relaxed">
+                TypeScriptとGoを並行して勉強しながらプロダクトを組み立て、
+                「作って終わり」ではなく、使う人に価値が伝わるソフトウェアを実装できるエンジニアを目指しています。
               </p>
             </div>
 
@@ -89,52 +79,30 @@ const About: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   className="glass-effect p-4 rounded-xl flex items-center space-x-3"
                 >
-                  <div className="p-2 bg-gradient-to-r from-primary-500 to-purple-500 rounded-lg">
+                  <div className="p-2 bg-gradient-to-r from-sky-400 to-purple-400 rounded-lg">
                     <info.icon size={20} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-dark-400 text-sm">{info.label}</p>
-                    <p className="text-white font-medium">{info.value}</p>
+                    <p className="text-slate-500 text-sm">{info.label}</p>
+                    <p className="text-slate-800 font-medium">{info.value}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Stats/Features */}
+          {/* Focus */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-6"
           >
-            {/* Stats Cards */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  className="glass-effect p-6 rounded-xl text-center"
-                >
-                  <div className="text-3xl font-bold gradient-text mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-dark-300 text-sm">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Skills Preview */}
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="glass-effect p-6 rounded-xl pr-8"
+              className="glass-effect p-6 rounded-xl pr-8 space-y-4"
             >
-              <h4 className="text-xl font-bold text-white mb-4">主要スキル</h4>
+              <h4 className="text-xl font-bold text-slate-900">主要スキル</h4>
               <div className="space-y-3">
                 {previewSkills.map((skill, index) => (
                   <div key={index} className="flex items-center gap-3">
@@ -145,8 +113,12 @@ const About: React.FC = () => {
                         className="w-5 h-5 object-contain"
                       />
                     )}
-                    <span className="text-dark-300 font-medium italic">
-                      {skill.name}
+                    <span className="text-slate-800 font-medium">
+                      {skill.name === "Go"
+                        ? "Go（学習中）"
+                        : skill.name === "TypeScript"
+                          ? "TypeScript（学習中）"
+                          : skill.name}
                     </span>
                   </div>
                 ))}

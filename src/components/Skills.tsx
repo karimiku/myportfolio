@@ -26,11 +26,6 @@ const Skills: React.FC = () => {
       icon: Database,
       skills: [
         {
-          name: "Python",
-          level: 10,
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-        },
-        {
           name: "Go",
           level: 10,
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
@@ -44,6 +39,11 @@ const Skills: React.FC = () => {
           name: "Node.js",
           level: 18,
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+        },
+        {
+          name: "Hono",
+          level: 12,
+          icon: "/hono-logo.svg",
         },
         {
           name: "MySQL",
@@ -117,10 +117,10 @@ const Skills: React.FC = () => {
               className="glass-effect p-6 rounded-2xl pr-8"
             >
               <div className="flex items-center mb-6">
-                <div className="p-3 bg-gradient-to-r from-primary-500 to-purple-500 rounded-xl mr-4">
+                <div className="p-3 bg-gradient-to-r from-sky-400 to-purple-400 rounded-xl mr-4">
                   <category.icon size={24} className="text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-xl font-bold text-slate-900">
                   {category.title}
                 </h3>
               </div>
@@ -135,7 +135,7 @@ const Skills: React.FC = () => {
                         className="w-5 h-5 object-contain"
                       />
                     )}
-                    <span className="text-dark-300 font-medium italic">
+                    <span className="text-slate-600 font-medium italic">
                       {skill.name}
                     </span>
                   </div>

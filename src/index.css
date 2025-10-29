@@ -8,17 +8,18 @@
   }
 
   body {
-    @apply bg-dark-900 text-dark-100 overflow-x-hidden;
+    @apply bg-slate-50 text-slate-800 overflow-x-hidden;
   }
 }
 
 @layer components {
   .glass-effect {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    @apply bg-white/80 backdrop-blur-2xl border border-white/70 shadow-lg;
+    box-shadow: 0 24px 50px rgba(148, 163, 184, 0.25);
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-sky-500 via-purple-500 to-rose-400 bg-clip-text text-transparent;
     overflow: visible !important;
     white-space: nowrap;
     display: inline-block;
@@ -26,12 +27,12 @@
   }
 
   .glow-box {
-    box-shadow: 0 0 50px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 55px rgba(56, 189, 248, 0.35);
   }
 
   .custom-scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: #6366f1 #1e293b;
+    scrollbar-color: #38bdf8 #e2e8f0;
   }
 
   .custom-scrollbar::-webkit-scrollbar {
@@ -39,11 +40,11 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    @apply bg-dark-800;
+    @apply bg-slate-200;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-gradient-to-b from-primary-500 to-purple-500 rounded-full;
+    @apply bg-gradient-to-b from-sky-400 to-purple-400 rounded-full;
   }
 
   /* スマホ表示対応 */
@@ -71,21 +72,21 @@
   z-index: 0;
   pointer-events: none;
   background: radial-gradient(
-      1000px 1000px at var(--x1, 20%) var(--y1, 30%),
-      rgba(99, 102, 241, 0.3),
+      1100px 1100px at var(--x1, 20%) var(--y1, 30%),
+      rgba(56, 189, 248, 0.28),
       transparent 60%
     ),
     radial-gradient(
       900px 900px at var(--x2, 80%) var(--y2, 70%),
-      rgba(168, 85, 247, 0.22),
+      rgba(196, 181, 253, 0.22),
       transparent 60%
     ),
     radial-gradient(
       800px 800px at var(--x3, 50%) var(--y3, 50%),
-      rgba(236, 72, 153, 0.18),
+      rgba(252, 165, 165, 0.18),
       transparent 60%
     );
-  filter: saturate(115%) blur(2px);
+  filter: saturate(120%) blur(2px);
   animation: bgMove 18s ease-in-out infinite alternate;
 }
 
@@ -143,47 +144,47 @@
 .bg-orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.55;
+  filter: blur(70px);
+  opacity: 0.45;
   will-change: transform;
   pointer-events: none;
 }
 
 .orb-1 {
-  width: clamp(280px, 40vw, 720px);
-  height: clamp(280px, 40vw, 720px);
-  top: -10vh;
-  left: -10vw;
+  width: clamp(300px, 42vw, 760px);
+  height: clamp(300px, 42vw, 760px);
+  top: -12vh;
+  left: -8vw;
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(99, 102, 241, 0.6),
-    rgba(99, 102, 241, 0) 60%
+    rgba(56, 189, 248, 0.55),
+    rgba(56, 189, 248, 0) 60%
   );
   animation: orbMove1 14s ease-in-out infinite alternate;
 }
 
 .orb-2 {
-  width: clamp(240px, 32vw, 600px);
-  height: clamp(240px, 32vw, 600px);
-  bottom: -15vh;
-  right: -10vw;
+  width: clamp(260px, 34vw, 620px);
+  height: clamp(260px, 34vw, 620px);
+  bottom: -18vh;
+  right: -12vw;
   background: radial-gradient(
     circle at 70% 40%,
-    rgba(168, 85, 247, 0.55),
-    rgba(168, 85, 247, 0) 60%
+    rgba(196, 181, 253, 0.5),
+    rgba(196, 181, 253, 0) 60%
   );
   animation: orbMove2 16s ease-in-out infinite alternate;
 }
 
 .orb-3 {
-  width: clamp(220px, 28vw, 520px);
-  height: clamp(220px, 28vw, 520px);
-  top: 35vh;
-  left: 30vw;
+  width: clamp(240px, 30vw, 540px);
+  height: clamp(240px, 30vw, 540px);
+  top: 38vh;
+  left: 32vw;
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(236, 72, 153, 0.5),
-    rgba(236, 72, 153, 0) 60%
+    rgba(252, 165, 165, 0.45),
+    rgba(252, 165, 165, 0) 60%
   );
   animation: orbMove3 18s ease-in-out infinite alternate;
 }

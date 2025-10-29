@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowUp, Github, Mail } from 'lucide-react'
+import { ArrowUp, Github } from 'lucide-react'
 
 const Footer: React.FC = () => {
     const scrollToTop = () => {
@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear()
 
     return (
-        <footer className="bg-dark-800/50 border-t border-dark-700">
+        <footer className="bg-white/80 backdrop-blur-lg border-t border-white/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
                     <motion.div
@@ -19,8 +19,8 @@ const Footer: React.FC = () => {
                         viewport={{ once: true }}
                         className="text-center md:text-left mb-6 md:mb-0"
                     >
-                        <p className="text-sm text-dark-300">
-                            © {currentYear} <span className="text-white font-medium">Rikuto</span>. Built with React, Vite, and Tailwind CSS.
+                        <p className="text-sm text-slate-500">
+                            © {currentYear} <span className="text-slate-900 font-medium">Rikuto</span>. Built with React, Vite, and Tailwind CSS.
                         </p>
                     </motion.div>
 
@@ -36,24 +36,16 @@ const Footer: React.FC = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.1, y: -2 }}
-                            className="p-3 glass-effect rounded-full text-dark-300 hover:text-white transition-colors duration-300"
+                            className="p-3 glass-effect rounded-full text-slate-600 hover:text-slate-900 transition-colors duration-300"
                             aria-label="GitHub"
                         >
                             <Github size={20} />
-                        </motion.a>
-                        <motion.a
-                            href="#contact"
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            className="p-3 glass-effect rounded-full text-dark-300 hover:text-white transition-colors duration-300"
-                            aria-label="Contact"
-                        >
-                            <Mail size={20} />
                         </motion.a>
                         <motion.button
                             onClick={scrollToTop}
                             whileHover={{ scale: 1.1, y: -2 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-3 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full text-white hover:shadow-lg transition-all duration-300"
+                            className="p-3 bg-gradient-to-r from-sky-500 via-cyan-500 to-purple-500 rounded-full text-white hover:shadow-lg transition-all duration-300"
                             aria-label="トップに戻る"
                         >
                             <ArrowUp size={20} />
@@ -66,18 +58,16 @@ const Footer: React.FC = () => {
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                     viewport={{ once: true }}
-                    className="mt-8 pt-8 border-t border-dark-700 text-center"
+                    className="mt-8 pt-8 border-t border-slate-200 text-center"
                 >
-                    <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-dark-400">
-                        <a href="#about" className="hover:text-white transition-colors">プロフィール</a>
-                        <span className="text-dark-600">•</span>
-                        <a href="#experience" className="hover:text-white transition-colors">経歴</a>
-                        <span className="text-dark-600">•</span>
-                        <a href="#skills" className="hover:text-white transition-colors">スキル</a>
-                        <span className="text-dark-600">•</span>
-                        <a href="#projects" className="hover:text-white transition-colors">プロジェクト</a>
-                        <span className="text-dark-600">•</span>
-                        <a href="#contact" className="hover:text-white transition-colors">お問い合わせ</a>
+                    <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-500">
+                        <a href="#about" className="hover:text-slate-900 transition-colors">プロフィール</a>
+                        <span className="text-slate-300">•</span>
+                        <a href="#experience" className="hover:text-slate-900 transition-colors">経歴</a>
+                        <span className="text-slate-300">•</span>
+                        <a href="#skills" className="hover:text-slate-900 transition-colors">スキル</a>
+                        <span className="text-slate-300">•</span>
+                        <a href="#projects" className="hover:text-slate-900 transition-colors">プロジェクト</a>
                     </div>
                 </motion.div>
             </div>

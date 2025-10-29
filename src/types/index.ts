@@ -47,9 +47,3 @@ export interface SocialLink {
     href: string
     label: string
 }
-
-export interface FormData {
-    name: string
-    email: string
-    message: string
-}
