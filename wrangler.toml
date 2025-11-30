@@ -1,6 +1,6 @@
 name = "myportfolio"
 compatibility_date = "2025-11-30"
 
-[site]
-bucket = "./dist"
+[assets]
+directory = "./dist"
 
