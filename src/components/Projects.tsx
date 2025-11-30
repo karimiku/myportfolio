@@ -19,7 +19,7 @@ const Projects: React.FC = () => {
       liveUrl: "https://smart-stay-dusky.vercel.app/",
       githubUrl: "https://github.com/karimiku/smart-stay-platform",
       featured: true,
-      purpose: "Go、gRPC、Cloud Pub/Sub を用いた、スマートヴィラ予約プラットフォーム。マイクロサービスアーキテクチャ、BFF パターン、Cloud Run 上でのイベント駆動設計を採用しています。このプロジェクトは、会員制/契約ベースの宿泊体験を実現するために、認証、デジタル鍵生成、予約のライフサイクル管理に特化しています。",
+      purpose: "Go、gRPC、Cloud Pub/Sub を用いた、スマートヴィラ予約プラットフォーム。マイクロサービスアーキテクチャ、BFF パターン、Cloud Run 上でのイベント駆動設計を採用しています。",
       motivation: "学習のためです。gRPCやマイクロサービスなど、そういうのを意識して作ってみたという感じです。",
       features: [
         "マイクロサービスアーキテクチャ: API Gateway (BFF)、Auth Service、Reservation Service、Key Service の4つの独立したサービス",
@@ -214,7 +214,7 @@ const Projects: React.FC = () => {
                 {project.featured && (
                     <div className="absolute top-6 left-6">
                       <span className="px-3 py-1 bg-blue-600 text-white text-xs font-light tracking-wider uppercase">
-                      Featured
+                      {project.title === "Smart Stay Platform" ? "In Development" : "Featured"}
                     </span>
                   </div>
                 )}
