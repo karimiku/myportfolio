@@ -45,12 +45,12 @@ const Hero: React.FC = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="flex items-center gap-6"
             >
-              <a
-                href="#projects"
-                className="luxury-button"
-              >
-                View Work
-              </a>
+                    <a
+                      href="#projects"
+                      className="luxury-button"
+                    >
+                      View Projects
+                    </a>
               <a
                 href="#about"
                 className="luxury-button-outline"
