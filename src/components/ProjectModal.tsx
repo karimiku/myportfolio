@@ -37,7 +37,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
             <div className="bg-slate-800 border border-slate-700 max-w-4xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar shadow-2xl">
               {/* Header */}
               <div className="sticky top-0 bg-slate-800 border-b border-slate-700 p-6 flex items-center justify-between">
-                <h2 className="text-3xl font-light text-slate-100">
+                <h2 className="text-3xl font-light gradient-text">
                   {project.title}
                 </h2>
                 <button

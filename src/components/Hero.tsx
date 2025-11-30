@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
               </motion.p>
               
               <h1 className="text-5xl lg:text-7xl font-light tracking-tight text-slate-100 leading-none">
-                <span className="block mb-2">Hello,</span>
+                <span className="gradient-text block mb-2">Hello,</span>
                 <span className="gradient-text block">I'm Rikuto</span>
               </h1>
             </div>

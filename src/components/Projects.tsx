@@ -176,9 +176,9 @@ const Projects: React.FC = () => {
           viewport={{ once: true }}
             className="mb-24"
           >
-            <h2 className="section-title text-slate-100 mb-4">
+            <h2 className="section-title mb-4">
               Projects
-          </h2>
+            </h2>
             <div className="w-16 h-px bg-slate-600 mt-6"></div>
         </motion.div>
 
@@ -229,7 +229,7 @@ const Projects: React.FC = () => {
 
               {/* Project Content */}
                 <div className="p-8">
-                  <h3 className="text-2xl font-light mb-4 text-slate-100">
+                  <h3 className="text-2xl font-light mb-4 gradient-text">
                   {project.title}
                 </h3>
                   <p className="text-base font-light leading-relaxed text-slate-300 mb-6">

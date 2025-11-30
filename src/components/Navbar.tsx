@@ -39,17 +39,17 @@ const Navbar: React.FC = () => {
         >
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="flex justify-between items-center h-20">
-                    <motion.a
-                        href="#home"
-                        onClick={(e) => {
-                            e.preventDefault()
-                            window.scrollTo({ top: 0, behavior: 'smooth' })
-                        }}
-                        className="text-xl font-light tracking-wider text-slate-100"
-                        whileHover={{ opacity: 0.7 }}
-                    >
-                        RIKUTO
-                    </motion.a>
+              <motion.a
+                href="#home"
+                onClick={(e) => {
+                  e.preventDefault()
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }}
+                className="text-xl font-light tracking-wider gradient-text"
+                whileHover={{ opacity: 0.7 }}
+              >
+                RIKUTO
+              </motion.a>
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center space-x-12">

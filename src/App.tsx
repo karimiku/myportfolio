@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen custom-scrollbar relative bg-slate-900">
+    <div className="min-h-screen custom-scrollbar relative">
       <div className="relative z-10">
         <Navbar />
         <Hero />

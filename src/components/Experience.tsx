@@ -34,7 +34,7 @@ const ExperienceSection: React.FC = () => {
           viewport={{ once: true }}
           className="mb-24"
         >
-          <h2 className="section-title text-slate-100 mb-4">
+          <h2 className="section-title mb-4">
             Experience
           </h2>
           <div className="w-16 h-px bg-slate-600 mt-6"></div>
@@ -67,7 +67,7 @@ const ExperienceSection: React.FC = () => {
                       </span>
                     </div>
 
-                    <h3 className="text-2xl font-light mb-2 text-slate-100">
+                    <h3 className="text-2xl font-light mb-2 gradient-text">
                       {exp.title}
                     </h3>
 

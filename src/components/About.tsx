@@ -26,7 +26,7 @@ const About: React.FC = () => {
           viewport={{ once: true }}
           className="mb-24"
         >
-          <h2 className="section-title text-slate-100 mb-4">About</h2>
+          <h2 className="section-title mb-4">About</h2>
           <div className="w-16 h-px bg-slate-600 mt-6"></div>
         </motion.div>
 
@@ -57,7 +57,7 @@ const About: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="luxury-card p-8">
-              <h3 className="text-2xl font-light mb-8 text-slate-100">
+              <h3 className="text-2xl font-light mb-8 gradient-text">
                 Key Skills
               </h3>
               <div className="space-y-6">

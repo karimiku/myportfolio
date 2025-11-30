@@ -90,7 +90,7 @@ const Skills: React.FC = () => {
           viewport={{ once: true }}
           className="mb-24"
         >
-          <h2 className="section-title text-slate-100 mb-4">
+          <h2 className="section-title mb-4">
             Skills
           </h2>
           <div className="w-16 h-px bg-slate-600 mt-6"></div>
@@ -110,7 +110,7 @@ const Skills: React.FC = () => {
                 <div className="p-3 bg-blue-600">
                   <category.icon size={20} className="text-white" />
                 </div>
-                <h3 className="text-xl font-light text-slate-100">
+                <h3 className="text-xl font-light gradient-text">
                   {category.title}
                 </h3>
               </div>
