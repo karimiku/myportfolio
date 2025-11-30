@@ -40,10 +40,36 @@ export interface Project {
     liveUrl: string
     githubUrl: string
     featured: boolean
+    motivation?: string
+    purpose?: string
+    features?: string[]
+    techStack?: {
+        runtime?: string[]
+        framework?: string[]
+        testing?: string[]
+        tools?: string[]
+        infrastructure?: string[]
+    }
+    screenshots?: string[]
+    isPrivate?: boolean
+    frontendUrl?: string
+    backendUrl?: string
 }
 
 export interface SocialLink {
     icon: React.ComponentType<any>
     href: string
     label: string
+}
+
+export interface BlogPost {
+    id: string
+    title: string
+    content: string
+    excerpt: string
+    date: string
+    tags: string[]
+    published: boolean
+    createdAt: string
+    updatedAt: string
 }

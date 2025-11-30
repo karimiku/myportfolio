@@ -8,219 +8,199 @@
   }
 
   body {
-    @apply bg-slate-50 text-slate-800 overflow-x-hidden;
+    @apply bg-slate-900 text-slate-100 overflow-x-hidden;
+    font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    @apply border-slate-700;
   }
 }
 
 @layer components {
-  .glass-effect {
-    @apply bg-white/80 backdrop-blur-2xl border border-white/70 shadow-lg;
-    box-shadow: 0 24px 50px rgba(148, 163, 184, 0.25);
+  /* 高級感のあるカード */
+  .luxury-card {
+    @apply bg-slate-800;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  .luxury-card:hover {
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+
+  /* エレガントなボーダー */
+  .elegant-border {
+    position: relative;
+  }
+
+  .elegant-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(148, 163, 184, 0.2) 20%,
+      rgba(59, 130, 246, 0.4) 50%,
+      rgba(148, 163, 184, 0.2) 80%,
+      transparent
+    );
+  }
+
+  /* 上品なグラデーションテキスト */
   .gradient-text {
-    @apply bg-gradient-to-r from-sky-500 via-purple-500 to-rose-400 bg-clip-text text-transparent;
-    overflow: visible !important;
-    white-space: nowrap;
-    display: inline-block;
-    padding-right: 1rem;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #e2e8f0 0%, #60a5fa 50%, #e2e8f0 100%);
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
-  .glow-box {
-    box-shadow: 0 0 55px rgba(56, 189, 248, 0.35);
+  /* ミニマルなボタン */
+  .luxury-button {
+    @apply bg-blue-600 text-white;
+    padding: 12px 32px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
   }
 
+  .luxury-button:hover {
+    @apply bg-blue-500 text-white;
+    border-color: currentColor;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+  }
+
+  .luxury-button-outline {
+    @apply bg-transparent text-slate-100;
+    padding: 12px 32px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .luxury-button-outline:hover {
+    @apply bg-blue-600 text-white border-blue-600;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+  }
+
+  /* セクションタイトル */
+  .section-title {
+    font-size: 48px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 36px;
+    }
+  }
+
+  /* ナビゲーション */
+  .nav-link {
+    @apply text-slate-300;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    @apply text-blue-400;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* カスタムスクロールバー */
   .custom-scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: #38bdf8 #e2e8f0;
+    scrollbar-color: rgba(59, 130, 246, 0.3) transparent;
   }
 
   .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    @apply bg-slate-200;
+    background: transparent;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-gradient-to-b from-sky-400 to-purple-400 rounded-full;
+    background: rgba(59, 130, 246, 0.3);
+    border-radius: 3px;
   }
 
-  /* スマホ表示対応 */
-  @media (max-width: 640px) {
-    .hero-text-container {
-      overflow: visible !important;
-      width: 100% !important;
-      min-width: 280px !important;
-    }
-
-    .gradient-text {
-      font-size: clamp(1.25rem, 5vw, 2rem) !important;
-      line-height: 1.2 !important;
-      overflow: visible !important;
-      white-space: normal !important;
-      padding-right: 1.5rem !important;
-    }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.5);
   }
 }
 
-/* Subtle animated gradient background across the whole page */
-.animated-gradient-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(
-      1100px 1100px at var(--x1, 20%) var(--y1, 30%),
-      rgba(56, 189, 248, 0.28),
-      transparent 60%
-    ),
-    radial-gradient(
-      900px 900px at var(--x2, 80%) var(--y2, 70%),
-      rgba(196, 181, 253, 0.22),
-      transparent 60%
-    ),
-    radial-gradient(
-      800px 800px at var(--x3, 50%) var(--y3, 50%),
-      rgba(252, 165, 165, 0.18),
-      transparent 60%
+/* アニメーション */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* 背景パターン（オプション） */
+.luxury-bg-pattern {
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(0, 0, 0, 0.02) 1px,
+      rgba(0, 0, 0, 0.02) 2px
     );
-  filter: saturate(120%) blur(2px);
-  animation: bgMove 18s ease-in-out infinite alternate;
 }
 
-@keyframes bgMove {
-  0% {
-    --x1: 18%;
-    --y1: 28%;
-    --x2: 82%;
-    --y2: 72%;
-    --x3: 52%;
-    --y3: 48%;
-  }
-  50% {
-    --x1: 24%;
-    --y1: 36%;
-    --x2: 72%;
-    --y2: 60%;
-    --x3: 58%;
-    --y3: 44%;
-  }
-  100% {
-    --x1: 30%;
-    --y1: 24%;
-    --x2: 60%;
-    --y2: 78%;
-    --x3: 64%;
-    --y3: 40%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animated-gradient-bg {
-    animation: none;
-  }
-  .bg-orb {
-    animation: none;
-  }
-}
-
-/* Allow manual override to force motion even if user prefers reduced motion */
-.motion-override .animated-gradient-bg {
-  animation: bgMove 18s ease-in-out infinite alternate !important;
-}
-.motion-override .orb-1 {
-  animation: orbMove1 14s ease-in-out infinite alternate !important;
-}
-.motion-override .orb-2 {
-  animation: orbMove2 16s ease-in-out infinite alternate !important;
-}
-.motion-override .orb-3 {
-  animation: orbMove3 18s ease-in-out infinite alternate !important;
-}
-
-/* Animated glowing orbs (reliable motion) */
-.bg-orb {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(70px);
-  opacity: 0.45;
-  will-change: transform;
-  pointer-events: none;
-}
-
-.orb-1 {
-  width: clamp(300px, 42vw, 760px);
-  height: clamp(300px, 42vw, 760px);
-  top: -12vh;
-  left: -8vw;
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(56, 189, 248, 0.55),
-    rgba(56, 189, 248, 0) 60%
-  );
-  animation: orbMove1 14s ease-in-out infinite alternate;
-}
-
-.orb-2 {
-  width: clamp(260px, 34vw, 620px);
-  height: clamp(260px, 34vw, 620px);
-  bottom: -18vh;
-  right: -12vw;
-  background: radial-gradient(
-    circle at 70% 40%,
-    rgba(196, 181, 253, 0.5),
-    rgba(196, 181, 253, 0) 60%
-  );
-  animation: orbMove2 16s ease-in-out infinite alternate;
-}
-
-.orb-3 {
-  width: clamp(240px, 30vw, 540px);
-  height: clamp(240px, 30vw, 540px);
-  top: 38vh;
-  left: 32vw;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(252, 165, 165, 0.45),
-    rgba(252, 165, 165, 0) 60%
-  );
-  animation: orbMove3 18s ease-in-out infinite alternate;
-}
-
-@keyframes orbMove1 {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(12vw, 10vh, 0) scale(1.1) rotate(25deg);
-  }
-  100% {
-    transform: translate3d(24vw, 18vh, 0) scale(1.2) rotate(45deg);
-  }
-}
-
-@keyframes orbMove2 {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(-10vw, -8vh, 0) scale(0.95) rotate(-20deg);
-  }
-  100% {
-    transform: translate3d(-22vw, -16vh, 0) scale(0.9) rotate(-40deg);
-  }
-}
-
-@keyframes orbMove3 {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(10vw, -12vh, 0) scale(1.15) rotate(18deg);
-  }
-  100% {
-    transform: translate3d(20vw, -24vh, 0) scale(1.3) rotate(36deg);
-  }
+.dark .luxury-bg-pattern {
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(255, 255, 255, 0.02) 1px,
+      rgba(255, 255, 255, 0.02) 2px
+    );
 }

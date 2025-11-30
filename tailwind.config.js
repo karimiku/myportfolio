@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -52,12 +53,28 @@ export default {
           800: "#1e293b",
           900: "#0f172a",
         },
+        gold: {
+          50: "#fffbeb",
+          100: "#fef3c7",
+          200: "#fde68a",
+          300: "#fcd34d",
+          400: "#fbbf24",
+          500: "#f59e0b",
+          600: "#d97706",
+          700: "#b45309",
+          800: "#92400e",
+          900: "#78350f",
+        },
       },
       animation: {
         "fade-in": "fadeIn 0.8s ease-in-out",
         "slide-up": "slideUp 0.8s ease-out",
         float: "float 6s ease-in-out infinite",
         glow: "glow 2s ease-in-out infinite alternate",
+        "bounce-playful": "bouncePlayful 2s ease-in-out infinite",
+        wobble: "wobble 3s ease-in-out infinite",
+        "spin-slow": "spin 8s linear infinite",
+        "pulse-gold": "pulseGold 2s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -75,6 +92,22 @@ export default {
         glow: {
           "0%": { boxShadow: "0 0 20px rgba(99, 102, 241, 0.5)" },
           "100%": { boxShadow: "0 0 30px rgba(99, 102, 241, 0.8)" },
+        },
+        bouncePlayful: {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "25%": { transform: "translateY(-10px) rotate(5deg)" },
+          "50%": { transform: "translateY(-15px) rotate(0deg)" },
+          "75%": { transform: "translateY(-10px) rotate(-5deg)" },
+        },
+        wobble: {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "25%": { transform: "rotate(2deg)" },
+          "50%": { transform: "rotate(0deg)" },
+          "75%": { transform: "rotate(-2deg)" },
+        },
+        pulseGold: {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.8", transform: "scale(1.05)" },
         },
       },
       fontFamily: {

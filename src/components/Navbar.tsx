@@ -1,92 +1,70 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
-import type { NavItem } from '../types'
 
 const Navbar: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50)
+            setScrolled(window.scrollY > 20)
         }
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    const navItems: NavItem[] = [
-        { name: 'ホーム', href: '#home' },
-        { name: 'プロフィール', href: '#about' },
-        { name: '経歴', href: '#experience' },
-        { name: 'スキル', href: '#skills' },
-        { name: 'プロジェクト', href: '#projects' }
+    const navItems = [
+        { name: 'About', href: '#about' },
+        { name: 'Experience', href: '#experience' },
+        { name: 'Skills', href: '#skills' },
+        { name: 'Projects', href: '#projects' },
     ]
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault()
+        const target = document.querySelector(href)
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+    }
 
     return (
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-effect shadow-2xl' : 'bg-transparent'
-                }`}
+            className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+                scrolled 
+                    ? 'bg-slate-900/90 backdrop-blur-md border-b border-slate-700' 
+                    : 'bg-transparent'
+            }`}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
+            <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                <div className="flex justify-between items-center h-20">
                     <motion.a
                         href="#home"
-                        whileHover={{ scale: 1.05 }}
-                        className="text-2xl font-display font-semibold italic gradient-text pr-6"
-                        aria-label="Rikuto Home"
+                        onClick={(e) => {
+                            e.preventDefault()
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                        }}
+                        className="text-xl font-light tracking-wider text-slate-100"
+                        whileHover={{ opacity: 0.7 }}
                     >
-                        Rikuto
+                        RIKUTO
                     </motion.a>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex space-x-6 lg:space-x-8">
-                        {navItems.map((item) => (
-                            <motion.a
-                                key={item.name}
-                                href={item.href}
-                                whileHover={{ y: -2 }}
-                                className="text-slate-600 hover:text-slate-900 transition-colors duration-300 relative group"
-                            >
-                                {item.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
-                            </motion.a>
-                        ))}
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <div className="md:hidden">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="text-slate-600 hover:text-slate-900 transition-colors"
-                        >
-                            {isOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
-                    </div>
-                </div>
-
-                {/* Mobile Menu */}
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="md:hidden glass-effect mt-2 rounded-lg p-4"
-                    >
+                    <div className="hidden md:flex items-center space-x-12">
                         {navItems.map((item) => (
                             <a
                                 key={item.name}
                                 href={item.href}
-                                onClick={() => setIsOpen(false)}
-                                className="block py-2 text-slate-600 hover:text-slate-900 transition-colors"
+                                onClick={(e) => handleNavClick(e, item.href)}
+                                className="nav-link"
                             >
                                 {item.name}
                             </a>
                         ))}
-                    </motion.div>
-                )}
+                    </div>
+                </div>
             </div>
         </motion.nav>
     )

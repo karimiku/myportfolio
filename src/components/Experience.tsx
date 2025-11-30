@@ -6,112 +6,90 @@ import type { Experience } from "../types";
 const ExperienceSection: React.FC = () => {
   const experiences: Experience[] = [
     {
-      period: "2025年4月 - 現在",
-      title: "エンジニアインターン",
-      company: "スタートアップ（社名非公開）",
-      location: "東京",
+      period: "Apr 2025 - Present",
+      title: "Engineer Intern",
+      company: "Startup (Confidential)",
+      location: "Tokyo",
       description: "開発以外にも、幅広く取り組んでいます。",
     },
     {
-      period: "2024年 - 現在",
-      title: "在学中（2年生）",
-      company: "東京都市大学 情報工学部 情報科学科",
-      location: "東京",
+      period: "2024 - Present",
+      title: "Student (2nd Year)",
+      company: "Tokyo City University, Department of Information Science",
+      location: "Tokyo",
       description: "CSや情報に関すること全般を学んでいます。",
     },
   ];
 
   return (
-        <section id="experience" className="py-20 bg-white/60 overflow-visible">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section
+      id="experience"
+      className="py-32 relative elegant-border"
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16 px-12 overflow-visible"
+          className="mb-24"
         >
-          <h2
-            className="text-4xl lg:text-5xl font-display font-bold italic mb-4 pr-16 overflow-visible"
-            style={{ overflow: "visible" }}
-          >
-            <span
-              className="gradient-text"
-              style={{ overflow: "visible", paddingRight: "2rem" }}
-            >
-              経歴
-            </span>
+          <h2 className="section-title text-slate-100 mb-4">
+            Experience
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto rounded-full"></div>
+          <div className="w-16 h-px bg-slate-600 mt-6"></div>
         </motion.div>
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary-500 to-purple-500 rounded-full max-md:left-8"></div>
+          <div className="absolute left-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 w-px h-full bg-slate-600"></div>
 
-          <div className="space-y-12">
+          <div className="space-y-16">
             {experiences.map((exp, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                key={`${exp.period}-${exp.company}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`flex items-center ${
-                  index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                } max-md:!flex-col max-md:text-center`}
+                className="relative pl-20 lg:pl-0 lg:grid lg:grid-cols-2 lg:gap-16 items-center"
               >
-                {/* Content */}
-                <div className="w-5/12 max-md:w-full">
-                  <motion.div
-                    whileHover={{ scale: 1.02, y: -5 }}
-                    className="glass-effect p-4 sm:p-6 rounded-2xl relative pr-8"
-                  >
-                    {/* Arrow */}
-                    <div
-                      className={`absolute top-8 ${
-                        index % 2 === 0 ? "-right-3" : "-left-3"
-                      } w-6 h-6 bg-gradient-to-r from-sky-400 to-purple-400 rotate-45`}
-                    ></div>
+                {/* Timeline Dot */}
+                <div className="absolute left-6 lg:left-1/2 lg:transform lg:-translate-x-1/2 w-3 h-3 bg-blue-600 rounded-full z-10"></div>
 
-                    <div className="flex items-center gap-2 text-sky-500 mb-2">
-                      <Calendar size={16} />
-                      <span className="text-sm font-medium">{exp.period}</span>
+                {/* Content */}
+                <div className={`${index % 2 === 0 ? 'lg:pr-16' : 'lg:col-start-2 lg:pl-16'}`}>
+                  <div className="luxury-card p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Calendar size={16} className="text-slate-400" />
+                      <span className="text-sm font-light tracking-wider uppercase text-slate-500">
+                        {exp.period}
+                      </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-slate-900 mb-1">
+                    <h3 className="text-2xl font-light mb-2 text-slate-100">
                       {exp.title}
                     </h3>
 
-                    <div className="flex items-center gap-2 text-slate-600 mb-2">
-                      <Briefcase size={16} />
-                      <span>{exp.company}</span>
+                    <div className="flex items-center gap-3 mb-4">
+                      <Briefcase size={16} className="text-slate-400" />
+                      <span className="text-base font-light text-slate-300">
+                        {exp.company}
+                      </span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-slate-500 mb-4">
-                      <MapPin size={16} />
-                      <span className="text-sm">{exp.location}</span>
+                    <div className="flex items-center gap-3 mb-6">
+                      <MapPin size={16} className="text-slate-400" />
+                      <span className="text-sm font-light text-slate-400">
+                        {exp.location}
+                      </span>
                     </div>
 
-                    <p className="text-slate-600 mb-4 leading-relaxed">
+                    <p className="text-base font-light leading-relaxed text-slate-300">
                       {exp.description}
                     </p>
-                  </motion.div>
+                  </div>
                 </div>
-
-                {/* Timeline Dot */}
-                <div className="w-2/12 flex justify-center max-md:w-auto max-md:absolute max-md:left-6 max-md:top-8">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
-                    viewport={{ once: true }}
-                    className="w-4 h-4 bg-gradient-to-r from-sky-400 to-purple-400 rounded-full border-4 border-white relative z-10"
-                  ></motion.div>
-                </div>
-
-                {/* Empty Space */}
-                <div className="w-5/12 max-md:hidden"></div>
               </motion.div>
             ))}
           </div>

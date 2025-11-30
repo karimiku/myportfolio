@@ -50,7 +50,7 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
         }}>
             {displayText}
             {showCursor && currentIndex < text.length && (
-                <span className="animate-pulse text-primary-400 ml-1">|</span>
+                <span className="animate-pulse text-slate-700 ml-1">|</span>
             )}
         </span>
     )
