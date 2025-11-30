@@ -35,7 +35,6 @@ export const techIcons: Record<string, string> = {
   
   // Other common techs
   "Bun": "https://bun.sh/logo.svg",
-  "GCP Functions": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
   "GAS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg",
   "Slack API": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg",
   "Automation": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/automation/automation-original.svg",
